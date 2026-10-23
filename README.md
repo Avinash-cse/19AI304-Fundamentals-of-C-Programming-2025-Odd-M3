@@ -28,7 +28,33 @@ To formulate a C program to convert a decimal number into its binary equivalent 
 ### Step 8: 
    Stop
 # Program:
+```
+    int n, binary[32], i = 0;
+
+    scanf("%d", &n);
+
+    if (n == 0) {
+        printf("Binary: 0");
+        return 0;
+    }
+
+    while (n > 0) {
+        binary[i++] = n % 2;
+        n = n / 2;
+    }
+
+    printf("Binary: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1214" height="682" alt="597712050-91602cd1-b23b-4014-8784-87b494e28217" src="https://github.com/user-attachments/assets/96e0327c-a2f5-479e-b186-71886f715966" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -67,7 +93,56 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9: 
   Stop
 # Program:
+```
+
+#include <stdio.h>
+
+int main() {
+    int a[10][10], r, c, i, j;
+
+    scanf("%d %d", &r, &c);
+
+    for (i = 0; i < r; i++)
+        for (j = 0; j < c; j++)
+            scanf("%d", &a[i][j]);
+
+    int found = 0;
+
+    for (i = 0; i < r; i++) {
+        int min = a[i][0], col = 0;
+
+        for (j = 1; j < c; j++) {
+            if (a[i][j] < min) {
+                min = a[i][j];
+                col = j;
+            }
+        }
+
+        int isSaddle = 1;
+        for (int k = 0; k < r; k++) {
+            if (a[k][col] > min) {
+                isSaddle = 0;
+                break;
+            }
+        }
+
+        if (isSaddle) {
+            printf("Saddle Point: %d\n", min);
+            printf("Position: (%d, %d)\n", i, col);
+            found = 1;
+        }
+    }
+
+    if (!found)
+        printf("No Saddle Point");
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1042" height="536" alt="682533141-4764845a-6520-4144-8789-2ca863fbb383" src="https://github.com/user-attachments/assets/dad60ae8-6469-4d5d-b91b-bd10125cc6b8" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -101,7 +176,29 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int i, len;
+
+    scanf("%s", str);
+
+    len = strlen(str);
+
+    for (i = len - 1; i >= 0; i--) {
+        printf("%c", str[i]);
+    }
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1040" height="412" alt="682533701-9f4d224a-a58d-4208-a6b9-ce9eed48c6e5" src="https://github.com/user-attachments/assets/6d8a5e11-8c39-441c-a701-83dfe0a32eb3" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -135,7 +232,33 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8:
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int freq[256] = {0};
+
+    scanf("%s", str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        freq[(int)str[i]]++;
+    }
+
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] != 0) {
+            printf("%c : %d\n", i, freq[i]);
+        }
+    }
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1043" height="481" alt="682534385-3c76a830-0ba4-42f4-8b94-b394e3ffc136" src="https://github.com/user-attachments/assets/ed5276ee-bd48-4f06-81b0-15ed20cdee1a" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -169,7 +292,38 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[200], words[50][50];
+    int count = 0;
+    fgets(str, sizeof(str), stdin);
+    char *token = strtok(str, " \n");
+    while (token != NULL) {
+        int found = 0;
+        for (int i = 0; i < count; i++) {
+            if (strcmp(words[i], token) == 0) {
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            strcpy(words[count], token);
+            count++;
+        }
+        token = strtok(NULL, " \n");
+    }
+    for (int i = 0; i < count; i++) {
+        printf("%s ", words[i]);
+    }
+    return 0;
+}
+```
 # Output:
+
+<img width="1038" height="510" alt="682535085-8cdf7902-e8af-40ee-8d25-386c9b63fe5d" src="https://github.com/user-attachments/assets/ad9e8682-9dec-406d-b3c7-fe6ae45793ca" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
